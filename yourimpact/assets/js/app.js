@@ -37,10 +37,10 @@ function dash(){
   const openR = rfqs.filter(r=>r.status!=='closed').length;
   const crit = risks.filter(r=>r.l*r.i>=16).length;
   $('#kpis').innerHTML = `
-    <div class="card kpi"><div class="n">${tasks.length}</div><div class="l">إجمالي المهام</div></div>
-    <div class="card kpi"><div class="n" style="color:${C.warn}">${late}</div><div class="l">مهام متأخرة</div></div>
-    <div class="card kpi"><div class="n">${openR}</div><div class="l">طلبات تسعير مفتوحة</div></div>
-    <div class="card kpi"><div class="n" style="color:${C.warn}">${crit}</div><div class="l">مخاطر حرجة</div></div>`;
+    <div class="card kpi k-gold"><div class="ic-wrap" style="background:var(--gold-soft);color:var(--gold-deep)"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12l3 3 5-6"/></svg></div><div class="n">${tasks.length}</div><div class="l">إجمالي المهام</div></div>
+    <div class="card kpi k-red"><div class="ic-wrap" style="background:var(--warn-soft);color:var(--warn)"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div class="n" style="color:${C.warn}">${late}</div><div class="l">مهام متأخرة</div></div>
+    <div class="card kpi k-blue"><div class="ic-wrap" style="background:var(--exec-soft);color:var(--exec)"><svg class="i" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div class="n">${openR}</div><div class="l">طلبات تسعير مفتوحة</div></div>
+    <div class="card kpi k-red"><div class="ic-wrap" style="background:var(--warn-soft);color:var(--warn)"><svg class="i" viewBox="0 0 24 24"><path d="M12 3l9 16H3z"/><path d="M12 10v4"/></svg></div><div class="n" style="color:${C.warn}">${crit}</div><div class="l">مخاطر حرجة</div></div>`;
   if(typeof Chart!=='undefined'){
     new Chart($('#cGoals'),{type:'bar',
       data:{labels:goalsTree.children.flatMap(g=>g.children.map(c=>c.name)),
